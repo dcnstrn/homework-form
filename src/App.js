@@ -88,7 +88,7 @@ function App() {
       username,
       email,
       phone,
-      image: URL.createObjectURL(selectedImage),
+      image: btoa(selectedImage),
     };
     alert(JSON.stringify(newForm));
   };
