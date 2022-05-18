@@ -80,6 +80,7 @@ function App() {
 
   const removeSelectedImage = () => {
     setSelectedImage();
+    setImageError("*Choose photo");
   };
 
   const submitHandler = (e) => {
