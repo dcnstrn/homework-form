@@ -129,23 +129,24 @@ function App() {
           type="text"
           placeholder="Enter your phone"
         />
-        {selectedImage && (
+        {imageDirty && imageError && (
+          <div className="inputError">{imageError}</div>
+        )}
+        {selectedImage ? (
           <div className="preview">
             <img src={URL.createObjectURL(selectedImage)} />
             <span onClick={removeSelectedImage}>+</span>
           </div>
+        ) : (
+          <input
+            onBlur={(e) => blurHandler(e)}
+            onChange={imageChange}
+            type="file"
+            name="image"
+            accept="image/*"
+            disabled={selectedImage}
+          />
         )}
-        {imageDirty && imageError && (
-          <div className="inputError">{imageError}</div>
-        )}
-        <input
-          onBlur={(e) => blurHandler(e)}
-          onChange={imageChange}
-          type="file"
-          name="image"
-          accept="image/*"
-          disabled={selectedImage}
-        />
 
         <button disabled={!formValid} type="submit">
           Submit
